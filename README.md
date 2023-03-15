@@ -45,7 +45,6 @@ Actual time needed to complete: 3hrs
 
 -----
 
------
 Name of feature: Lab 12 Backend
 
 Estimate of time needed to complete: 1hr  
@@ -55,6 +54,18 @@ Start time: 1300
 Finish time: 1400  
 
 Actual time needed to complete: 1hr  
+
+-----
+
+Name of feature: Lab 13 Backend
+
+Estimate of time needed to complete: 30mins  
+
+Start time: 12:30  
+
+Finish time: 12:48  
+
+Actual time needed to complete: 20 mins  
 
 -----
 
