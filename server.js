@@ -6,6 +6,7 @@ const cors = require('cors');
 const Book = require('./models/book');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const verifyUser = require('./auth')
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log('Mongoose is connected');
@@ -29,12 +30,19 @@ app.delete('/books/:id', deleteBook)
 app.put('/books/:id', putBook);
 
 async function getBooks(req, res, next) {
-  try {
-    let results = await Book.find({});
-    res.status(200).send(results);
-  } catch(err) {
-    next(err);
-  }
+  verifyUser(req, async (err, user)=> {
+    if(err){
+      console.error(err);
+      res.send('invalid token');
+    } else{
+      try {
+        let results = await Book.find({});
+        res.status(200).send(results);
+      } catch(err) {
+        next(err);
+      }
+    }  
+  });
 }
 
 async function postBook (req, res, next) {
