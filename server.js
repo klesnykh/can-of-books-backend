@@ -30,19 +30,19 @@ app.delete('/books/:id', deleteBook)
 app.put('/books/:id', putBook);
 
 async function getBooks(req, res, next) {
-  verifyUser(req, async (err, user)=> {
-    if(err){
-      console.error(err);
-      res.send('invalid token');
-    } else{
+  //verifyUser(req, async (err, user)=> {
+    // if(err){
+    //   console.error(err);
+    //   res.send('invalid token');
+    // } else{
       try {
         let results = await Book.find({});
         res.status(200).send(results);
       } catch(err) {
         next(err);
       }
-    }  
-  });
+    //}  
+  //});
 }
 
 async function postBook (req, res, next) {
